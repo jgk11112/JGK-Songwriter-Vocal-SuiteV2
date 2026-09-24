@@ -1,0 +1,34 @@
+name: Build JGK Songwriter Vocal Suite
+
+on:
+  push:
+  workflow_dispatch:
+
+jobs:
+  build-windows-vst3:
+    runs-on: windows-2022
+
+    steps:
+      - name: Get project
+        uses: actions/checkout@v4
+
+      - name: Configure
+        run: cmake -S . -B build -G "Visual Studio 17 2022" -A x64
+
+      - name: Build all VST3 plugins
+        run: cmake --build build --config Release --target JGKTune_VST3 JGKEQ_VST3 JGKComp_VST3 JGKDeEss_VST3 JGKSaturation_VST3 JGKSpace_VST3 JGKEcho_VST3 JGKLimiter_VST3 JGKVocalChain_VST3
+
+      - name: Upload VST3 suite
+        uses: actions/upload-artifact@v4
+        with:
+          name: JGK-Songwriter-Vocal-Suite-VST3
+          path: |
+            build/JGKTune_artefacts/Release/VST3/**
+            build/JGKEQ_artefacts/Release/VST3/**
+            build/JGKComp_artefacts/Release/VST3/**
+            build/JGKDeEss_artefacts/Release/VST3/**
+            build/JGKSaturation_artefacts/Release/VST3/**
+            build/JGKSpace_artefacts/Release/VST3/**
+            build/JGKEcho_artefacts/Release/VST3/**
+            build/JGKLimiter_artefacts/Release/VST3/**
+            build/JGKVocalChain_artefacts/Release/VST3/**
