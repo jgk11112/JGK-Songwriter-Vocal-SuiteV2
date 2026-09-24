@@ -1,0 +1,5 @@
+Copyright (c) 2026 JGK. All rights reserved.
+
+This repository is currently private/proprietary project source. No permission is granted by this file to copy, redistribute, sublicense, sell, or publish the source code or project assets.
+
+Third-party dependencies retain their own licences. In particular, JUCE is not covered by this notice and must be used in accordance with the JUCE licence applicable to the project/distribution model.
